@@ -10,5 +10,5 @@ int count(int arr[], int n) {
         }
     }
 
-    return 0;
+    return total;
 }
