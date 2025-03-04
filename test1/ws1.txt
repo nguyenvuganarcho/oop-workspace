@@ -1,0 +1,4 @@
+1. Describe changes in the commit
+2. Clear, concise and provide context about the changes of the commit
+3. Commit it whenever you complete a work
+4. False, you only commit the neccessary files
