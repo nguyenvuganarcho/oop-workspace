@@ -2,11 +2,11 @@
 using namespace std;
 
 extern int* readNumbers();
-extern int secondSmallest(int *numbers, int n);
+extern int secondSmallestSum(int *numbers, int n);
 
 int main() {
     int* numbers = readNumbers();
-    int result = secondSmallest(numbers, 10);
+    int result = secondSmallestSum(numbers, 10);
 
     cout  << "Second smallest number is: " << result << endl;
     return 0;
