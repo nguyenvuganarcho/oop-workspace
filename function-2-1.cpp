@@ -17,6 +17,6 @@ void hexDigits(int* numbers, int length) {
 
   for (int i = 0; i < 10; i++) {
     char hexDigit = hexChar[numbers[i]];
-    cout << i << " " << numbers[i] << "" << hexDigit << endl;
+    cout << i << " " << numbers[i] << " " << hexDigit << endl;
   }
 }

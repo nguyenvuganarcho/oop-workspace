@@ -22,7 +22,7 @@ int* reverseArray(int* numbers1, int length) {
 }
 
 
-bool equalArrays(int* numbers1, int* numbers2, int length) {
+bool equalsArray(int* numbers1, int* numbers2, int length) {
     if (length < 1) {
         return false;
     }
