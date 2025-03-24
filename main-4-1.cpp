@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-extern int* readNumbers(int *numbers, int n);
+extern int* readNumbers();
 extern int secondSmallest(int *numbers, int n);
 
 int main() {
