@@ -12,8 +12,8 @@ class TV : public Appliance {
     TV(int powerRating, double screenSize);
 
     // getters and setters
-    void setScreenSize(double screenSize);
-    double getScreenSize() const;
+    void set_ScreenSize(double screenSize);
+    double get_ScreenSize() const;
 
     // Overriding the pure virtual function from Appliance
     double getPowerConsumption() const override;

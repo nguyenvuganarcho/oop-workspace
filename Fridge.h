@@ -12,8 +12,8 @@ class Fridge : public Appliance {
     Fridge(int powerRating, double volume);
 
     // Getters and Setters
-    double getVolume() const;
-    void setVolume(double volume);
+    double get_Volume() const;
+    void set_Volume(double volume);
 
     // Overriding the pure virtual function from Appliance
     double getPowerConsumption() const override;
