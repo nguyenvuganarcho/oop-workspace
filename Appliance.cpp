@@ -14,11 +14,11 @@ Appliance::Appliance(int powerRating) {
 }
 
 
-int Appliance::get_PowerRating() const {
+int Appliance::get_powerRating() const {
     return powerRating;
 }
 
-void Appliance::set_PowerRating(int powerRating) {
+void Appliance::set_powerRating(int powerRating) {
     this->powerRating = powerRating;
 }
 

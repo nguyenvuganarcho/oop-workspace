@@ -19,5 +19,5 @@ double TV::get_ScreenSize() const {
 }
 
 double TV::getPowerConsumption() const {
-    return get_PowerRating() * (screenSize / 10);
+    return get_powerRating() * (screenSize / 10);
 }

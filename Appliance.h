@@ -14,8 +14,8 @@ public:
     Appliance(int powerRating);
     
     // Getters and setters
-    int get_PowerRating() const;
-    void set_PowerRating(int powerRating);
+    int get_powerRating() const;
+    void set_powerRating(int powerRating);
     bool get_isOn() const;
     
     // Methods

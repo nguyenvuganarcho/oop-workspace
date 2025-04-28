@@ -7,13 +7,13 @@ int main() {
     // Create an appliance with default constructor
     Appliance defaultAppliance;
     cout << "Default Appliance:" << endl;
-    cout << "Power Rating: " << defaultAppliance.get_PowerRating() << endl;
+    cout << "Power Rating: " << defaultAppliance.get_powerRating() << endl;
     cout << "Is On: " << (defaultAppliance.get_isOn() ? "Yes" : "No") << endl;
     
     // Create an appliance with parameterized constructor
     Appliance customAppliance(1500);
     cout << "\nCustom Appliance:" << endl;
-    cout << "Power Rating: " << customAppliance.get_PowerRating() << endl;
+    cout << "Power Rating: " << customAppliance.get_powerRating() << endl;
     cout << "Is On: " << (customAppliance.get_isOn() ? "Yes" : "No") << endl;
     
     // Test turning on and off
@@ -30,8 +30,8 @@ int main() {
     
     // Test setter
     cout << "\nChanging power rating to 2000..." << endl;
-    customAppliance.set_PowerRating(2000);
-    cout << "New Power Rating: " << customAppliance.get_PowerRating() << endl;
+    customAppliance.set_powerRating(2000);
+    cout << "New Power Rating: " << customAppliance.get_powerRating() << endl;
     
     return 0;
 }
