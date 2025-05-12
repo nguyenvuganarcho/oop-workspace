@@ -1,18 +1,23 @@
-#include <iostream>  // For input/output operations
-#include <fstream>   // For file operations
-#include <vector>    // For storing records
-#include <string>    // For string handling
-#include <stdexcept> // For standard exceptions
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <stdexcept>
 
-using namespace std;  // This makes all std items available without the std:: prefix
+using namespace std;
 
 class RecordsManager {
 private:
-    vector<int> records;  // Vector to store all the numbers
+    vector<int> records;
+    string filename;  // Store the filename as a class member
 
 public:
-    void read(const string& filename) {
-        ifstream file(filename);  // Open the file
+    // Constructor now takes the filename
+    RecordsManager(const string& file) : filename(file) {}
+    
+    // read() function with no parameters
+    void read() {
+        ifstream file(filename);  // Open the file using the stored filename
         
         try {
             if (!file.is_open()) {
@@ -20,7 +25,7 @@ public:
             }
             
             string line;
-            while (getline(file, line)) {  // Read the file line by line
+            while (getline(file, line)) {
                 records.push_back(stoi(line));  // Convert string to int and store
             }
         } 
@@ -52,7 +57,7 @@ public:
     }
 
     const vector<int>& getRecords() const {
-        return records;  // Return the vector of records
+        return records;
     }
 };
 
@@ -62,21 +67,23 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    RecordsManager records;
+    // Create RecordsManager with the filename from command line
+    RecordsManager records(argv[1]);
+    
     try {
-        records.read(argv[1]);  // Try to read the file
+        records.read();  // Call read() with no parameters
         
-        // Calculate the sum of all numbers
+        // Calculate the sum
         int sum = 0;
         for (int value : records.getRecords()) {
             sum += value;
         }
-        cout << "Sum: " << sum << endl;
+        cout << sum << endl;
     } 
     catch (const exception& e) {
         cerr << "Error: " << e.what() << endl;
         return 1;  // Return error code
     }
     
-    return 0;  // Return success code
+    return 0;
 }
