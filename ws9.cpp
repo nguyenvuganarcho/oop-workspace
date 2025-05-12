@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
         for (int value : records.getRecords()) {
             sum += value;
         }
-        cout << "Sum: " << sum << endl;
+        cout << sum << endl;
     }
     catch (const exception& e) {
         // Catch all standard exceptions
