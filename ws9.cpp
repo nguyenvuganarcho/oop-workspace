@@ -9,50 +9,53 @@ using namespace std;
 class RecordsManager {
 private:
     vector<int> records;
-    string filename;  // Store the filename as a class member
+    string filename;
 
 public:
-    // Constructor now takes the filename
+    // Constructor
     RecordsManager(const string& file) : filename(file) {}
     
-    // read() function with no parameters
     void read() {
-        ifstream file(filename);  // Open the file using the stored filename
+        ifstream file;  // Create file stream but don't open yet
         
         try {
+            file.open(filename);  // Try to open the file
+            
             if (!file.is_open()) {
                 throw ios_base::failure("Failed to open file");
             }
             
             string line;
             while (getline(file, line)) {
-                records.push_back(stoi(line));  // Convert string to int and store
+                try {
+                    records.push_back(stoi(line));
+                }
+                catch (const invalid_argument& e) {
+                    cout << "invalid_argument error" << endl;
+                    // Close file before re-throwing
+                    file.close();
+                    throw;  // Re-throw to main
+                }
+                catch (const out_of_range& e) {
+                    cout << "out_of_range error" << endl;
+                    // Close file before re-throwing
+                    file.close();
+                    throw;  // Re-throw to main
+                }
             }
-        } 
-        catch (const invalid_argument& e) {
-            cout << "invalid_argument error" << endl;
-            if (file.is_open()) {
-                file.close();
-            }
-            throw;  // Pass the exception up to main()
-        } 
-        catch (const out_of_range& e) {
-            cout << "out_of_range error" << endl;
-            if (file.is_open()) {
-                file.close();
-            }
-            throw;  // Pass the exception up to main()
         }
         catch (const ios_base::failure& e) {
             cout << "ios_base::failure error" << endl;
+            // Only try to close if it was successfully opened
             if (file.is_open()) {
                 file.close();
             }
-            throw;  // Pass the exception up to main()
+            throw;  // Re-throw to main
         }
         
+        // Make sure to close the file if we get here
         if (file.is_open()) {
-            file.close();  // Close the file in the normal case too
+            file.close();
         }
     }
 
@@ -67,23 +70,30 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    // Create RecordsManager with the filename from command line
-    RecordsManager records(argv[1]);
-    
     try {
-        records.read();  // Call read() with no parameters
+        // Create RecordsManager with filename from command line
+        RecordsManager records(argv[1]);
         
-        // Calculate the sum
+        // Try to read the file
+        records.read();
+        
+        // Calculate sum if read was successful
         int sum = 0;
         for (int value : records.getRecords()) {
             sum += value;
         }
-        cout << sum << endl;
-    } 
+        cout << "Sum: " << sum << endl;
+    }
     catch (const exception& e) {
+        // Catch all standard exceptions
         cerr << "Error: " << e.what() << endl;
-        return 1;  // Return error code
+        return 1;  // Use a positive error code (1) instead of -1
+    }
+    catch (...) {
+        // Catch any other unexpected exceptions
+        cerr << "Unknown error occurred" << endl;
+        return 2;  // Different error code for unknown exceptions
     }
     
-    return 0;
+    return 0;  // Successful execution
 }
