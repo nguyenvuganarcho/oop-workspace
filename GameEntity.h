@@ -21,14 +21,14 @@ class GameEntity {
     : position(make_tuple(x, y)),
     type(NoneType) {
         switch (type) {
-            case 'e':
-            type = ExplosionType;
+            case 'E':
+            this->type = ExplosionType;
             break;
-            case 'm':
-            type = MineType;
+            case 'M':
+            this->type = MineType;
             break;
-            case 's':
-            type = ShipType;
+            case 'S':
+            this->type = ShipType;
             break;
             default:
             type = NoneType;
@@ -36,11 +36,11 @@ class GameEntity {
         }
     }
 
-    tuple<int, int> getPos() {
+    tuple<int, int> getPos() const {
         return position;
     }
 
-    GameEntityType getType() {
+    GameEntityType getType() const {
         return type;
     }
 
@@ -48,7 +48,6 @@ class GameEntity {
         position = newPos;
     }
 
-    // Setter for type
     void setType(GameEntityType newType) {
         type = newType;
     }

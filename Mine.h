@@ -10,7 +10,7 @@
 class Mine : public GameEntity {
 public:
 
-    Mine(int x, int y) : GameEntity(x, y, 'm') {}
+    Mine(int x, int y) : GameEntity(x, y, 'M') {}
 
     Explosion explode() {
        tuple<int,int> pos = getPos();
