@@ -8,7 +8,7 @@ using namespace std;
 
 class Explosion : public GameEntity, public Effect {
     public:
-    Explosion(int x, int y) : GameEntity(x, y, 'E') {}
+    Explosion(int x, int y) : GameEntity(x, y, 'e') {}
 
     void apply(GameEntity& entity) override {
         entity.setPos(make_tuple(-1,-1));

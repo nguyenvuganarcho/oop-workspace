@@ -21,13 +21,13 @@ class GameEntity {
     : position(make_tuple(x, y)),
     type(NoneType) {
         switch (type) {
-            case 'E':
+            case 'e':
             type = ExplosionType;
             break;
-            case 'M':
+            case 'm':
             type = MineType;
             break;
-            case 'S':
+            case 's':
             type = ShipType;
             break;
             default:

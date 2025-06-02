@@ -1,6 +1,8 @@
 #ifndef MINE_H
 #define MINE_H
 
+#include <tuple>
+
 #include "GameEntity.h"
 #include "Explosion.h"
 
@@ -8,7 +10,7 @@
 class Mine : public GameEntity {
 public:
 
-    Mine(int x, int y) : GameEntity(x, y, 'M') {}
+    Mine(int x, int y) : GameEntity(x, y, 'm') {}
 
     Explosion explode() {
        tuple<int,int> pos = getPos();
