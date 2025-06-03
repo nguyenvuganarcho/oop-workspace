@@ -100,7 +100,6 @@ class Game {
         }
 
         if (shipRemain == 0) {
-            cout << "All ships destroyed at iteration " << i << ".\n";
             break;
         }
 
